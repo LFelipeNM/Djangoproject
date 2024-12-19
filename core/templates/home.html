@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="icon" href="{% static 'img/logopreto.png' %}" type="image/x-icon">
+
+    <title>AlphaNutri | Home</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg mx-4 my-3 p-2 rounded-5 shadow-sm" style="background-color: #224608c0 !important;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'img/unnamed.png' %}" alt="Logo" width="70" height="70" class="d-inline-block align-text-top" style="margin-left: 2vh;">
+        </a>
+
+        <!-- Botão do menu com ícone branco -->
+        <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto" style="margin-right: 275px;">
+                <a class="nav-link active link-hover" href="#" style="color: white; margin-right: 20px;">Home</a>
+                <a class="nav-link link-hover" href="#section1" style="color: white; margin-right: 20px;">Unidade</a>
+                <a class="nav-link link-hover" href="{% url 'carregamento' %}" style="color: white;">Agendar Consulta</a>
+            </div>
+
+            <a class="nav-link link-hover" href="{% url 'carregamento' %}" style="color: white; margin-right: 15px;">Login</a>
+            <a class="btn btn-outline-light" href="{% url 'carregamento2' %}" role="button">Cadastro</a>
+        </div>
+    </div>
+</nav>
+
+</header>
+    <div class="container text-center mt-4">
+        <h1 class="display-4 slide-in-left" style="color: #000000; font-weight:bold;  font-family: 'Abril Fatface', sans-serif;">
+            "Nutrição é a arte de dar saúde à vida"
+        </h1>
+        <p class="signature slide-in-left" style="margin-top: 1%;">
+            Liliane Coelho
+        </p>
+        
+        <hr style="border: 1px solid black; width: 28%; margin: 0 auto; margin-top: 1%; margin-right: 65.5%;" class="slide-in-leftlinha">
+        <p class="frase slide-in-left" style="margin-top: 2%; font-size: 19px;">
+            Invista no seu bem-estar e saúde. Agende sua consulta e comece a transformação agora.
+        </p>
+    </div>
+
+    <div class="container d-flex justify-content-center" style="margin-top: 3%;">
+        <a href="{% url 'carregamento' %}" class="btn btn-success btn-agendar slide-in-left" 
+           style="background-color: #ff6f00; color: white; border: none; padding: 12px 24px; font-size: 18px; border-radius: 8px; cursor: pointer; transition: all 0.3s ease-in-out; text-decoration: none;">
+           Agendar Consulta
+        </a>
+    </div>
+    <div class="image-content ml-4">
+        <img src="{% static 'img/prato.png' %}" alt="Imagem de bem-estar" class="img-fluid" style="width: 50%; height: auto;">
+    </div>
+    <div class="image-content ml-4">
+        <img src="{% static 'img/prato2.png' %}" alt="Imagem de bem-estar" class="img-fluid2 slide-in-left-rotate" style="width: 36.2%; height: auto;">
+    </div>
+    
+    <div class="container text-center">
+        <h1 id="title" class="fade-in" style="font-weight: bold; color: #000; margin-top: 3%; font-size: 3rem;font-family: 'Abril Fatface', sans-serif;">Depoimentos</h1>
+    </div>
+    
+    <div class="container wave-background" style="margin-top: 11%; opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease;" id="cardGroup">
+        <div class="row justify-content-center">
+            <div class="col-md-4"> 
+                <div class="card" style="width: 100%;"> 
+                    <img src="{% static 'img/dep1.png' %}" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;"> 
+                    <div class="card-body">
+                        <h5 class="card-title">Luana Ferraz</h5>
+                        <p class="card-text">Eu pesava 234kg em 2022 e fui diagnosticada com hipertensão. Decidi mudar minha vida com a AlphaNutri, aprendendo sobre alimentação e exercícios. Com resiliência, alcancei resultados incríveis!</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-4">
+                <div class="card" style="width: 100%;">
+                    <img src="{% static 'img/dep2.png' %}" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;"> 
+                    <div class="card-body">
+                        <h5 class="card-title">Bruno Braga</h5>
+                        <p class="card-text">Minha experiência na academia tem sido ótima. Com a orientação certa, melhorei minha força e resistência, além de aprimorar minha flexibilidade e postura, melhorou muito o meu bem-estar geral.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-4">
+                <div class="card" style="width: 100%;">
+                    <img src="{% static 'img/dep3.png' %}" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;"> 
+                    <div class="card-body">
+                        <h5 class="card-title">Lorena Marques</h5>
+                        <p class="card-text">A introdução alimentar com a Lolô foi incrível. Os profissionais me orientaram de forma cuidadosa, ajudando minha filha a experimentar alimentos variados de maneira divertida. Estou muito satisfeita!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+
+
+    <div class="container text-center my-5">
+        <h1 id="title" class="fade-in" style="font-weight: bold; color: #000; margin-top: 8%; font-size: 3rem;font-family: 'Abril Fatface', sans-serif;">Convênios parceiros</h1>
+    </div>
+
+
+    <div style="margin-top: -50px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px;">
+        <div class="container-flex">
+            <div class="image-wrapper">
+                <img src="{% static 'img/c1.png' %}" class="d-block fade-in" alt="Convênio 1">
+            </div>
+            <div class="image-wrapper">
+                <img src="{% static 'img/c2.png' %}" class="d-block fade-in" alt="Convênio 2">
+            </div>
+            <div class="image-wrapper">
+                <img src="{% static 'img/c3.png' %}" class="d-block fade-in" alt="Convênio 3">
+            </div>
+            <div class="image-wrapper">
+                <img src="{% static 'img/c4.png' %}" class="d-block fade-in" alt="Convênio 4">
+            </div>
+        </div>
+    </div>
+
+    <div class="container text-center my-5">
+        <h1 id="title" class="fade-in" style="font-weight: bold; color: #000; margin-top: 9%; font-size: 3rem;font-family: 'Abril Fatface', sans-serif;">Especialidades</h1>
+    </div>
+
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Introdução Alimentar
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>A introdução alimentar é uma etapa importantíssima na vida do ser humano, visto que é o processo marcado pela transição do aleitamento materno ou fórmula para alimentos sólidos.</strong> Na Clínica AlphaNutri, oferecemos acompanhamento especializado para a introdução alimentar do seu bebê. Nossa equipe de profissionais orienta pais e cuidadores no processo de introdução de alimentos sólidos a partir dos 6 meses, garantindo uma alimentação equilibrada e saudável. Trabalhamos com abordagens personalizadas para diversificar a dieta, respeitar o ritmo da criança e fornecer os nutrientes essenciais para o seu desenvolvimento. Agende uma consulta e receba orientação de experts para uma introdução alimentar segura e tranquila!
+    
+            </div>
+          </div>
+        </div>
+    
+       
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Fisioterapia Geral
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>A fisioterapia é uma área essencial da saúde que se concentra na prevenção, diagnóstico e tratamento de distúrbios do movimento e da função física do corpo. </strong> Na Clínica AlphaNutri, oferecemos serviços de fisioterapia geral para prevenção e tratamento de disfunções musculoesqueléticas, respiratórias e neurológicas. Nossos profissionais utilizam técnicas como exercícios terapêuticos, alongamentos, massagens e eletroterapia para melhorar a mobilidade, aliviar dores e promover a recuperação funcional. Agende sua consulta e recupere sua qualidade de vida com o cuidado especializado que você merece!
+    
+            </div>
+          </div>
+        </div>
+    
+        
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Fisioterapia Infantil
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+    <strong>A fisioterapia infantil desempenha um papel fundamental no desenvolvimento e na saúde das crianças, ajudando a prevenir, tratar e reabilitar uma série de condições físicas e motoras.</strong> Na Clínica AlphaNutri, oferecemos fisioterapia infantil especializada para o desenvolvimento motor e reabilitação de crianças. Utilizamos técnicas personalizadas para melhorar a mobilidade, postura e função muscular, sempre respeitando o ritmo de cada criança. Agende uma consulta e cuide da saúde e bem-estar do seu filho com profissionais qualificados!
+    
+            </div>
+          </div>
+        </div>
+    
+        
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              Nutrição Infantil
+            </button>
+          </h2>
+          <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>A nutrição infantil é fundamental para o crescimento e desenvolvimento saudável das crianças.</strong> Na Clínica AlphaNutri oferecemos serviços de nutrição infantil para ajudar no crescimento e desenvolvimento saudável das crianças. Nossa nutricionista especializada orienta pais e responsáveis sobre alimentação balanceada, alergias alimentares, introdução alimentar e hábitos saudáveis. Com um atendimento personalizado, buscamos promover uma dieta nutritiva e adequada a cada fase da infância. Agende uma consulta e garanta a saúde alimentar do seu filho!
+            </div>
+          </div>
+        </div>
+    
+        
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+              Nutrição Geral
+            </button>
+          </h2>
+          <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>A nutrição geral desempenha um papel fundamental em todas as fases da vida, influenciando a saúde física, mental e o bem-estar geral.</strong> Na Clínica AlphaNutri oferecemos serviços de nutrição geral para promover uma alimentação equilibrada e saudável, adaptada às necessidades individuais de cada paciente. Nossa equipe de nutricionistas está pronta para ajudar com controle de peso, alimentação para doenças crônicas, orientações para uma dieta saudável e personalizada, além de acompanhamento nutricional contínuo. Agende sua consulta e conquiste uma vida mais saudável com o apoio de profissionais especializados!
+            </div>
+          </div>
+        </div>
+    </div>
+    <h2 id="titulo" 
+    class="fade-in"
+    style=" font-weight: bold; color: #000; opacity: 0; transform: translateY(-30px); transition: opacity 0.6s ease, transform 0.6s ease; font-size: 2.7rem; text-align: center; margin-bottom: 20px; margin-top: 10%;font-family: 'Abril Fatface', sans-serif;">
+    Conheça a Unidade
+    </h2>
+<section id="section1">
+    <div class="d-flex justify-content-center">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" style="width: 60vw; height: auto;">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{% static 'img/clinica1.png' %}" class="d-block w-100" alt="..." style="border-radius: 15px;">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/clinica2.png' %}" class="d-block w-100" alt="..." style="border-radius: 15px;">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/clinica3.png' %}" class="d-block w-100" alt="..." style="border-radius: 15px;">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/clinica4.png' %}" class="d-block w-100" alt="..." style="border-radius: 15px;">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/clinica5.png' %}" class="d-block w-100" alt="..." style="border-radius: 15px;">
+            </div>
+          </div>
+      
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+      
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      
+</section>
+
+<div class="whatsapp-button">
+    <a href="https://wa.me/5511970165545" target="_blank" title="Fale conosco pelo WhatsApp">
+        <img src="{% static 'img/whatsapp-icon.png' %}" alt="WhatsApp">
+    </a>
+</div>
+      
+
+
+
+<footer class="footer">
+    <div class="logos">
+        <!-- Link para o Facebook -->
+        <div class="facebook" data-bs-interval="2000">
+            <a href="https://facebook.com/seu_perfil" target="_blank">
+                <img src="{% static 'img/iconfc.png' %}" alt="Logo do Facebook">
+            </a>
+        </div>
+        <!-- Link para a Localização -->
+        <div class="localiza" data-bs-interval="2000">
+            <a href="https://maps.app.goo.gl/Sffm3oE6LmKB76rNA" target="_blank">
+                <img src="{% static 'img/iconlocaliza.png' %}" alt="Logo da Localização">
+            </a>
+        </div>
+        
+        <!-- Link para o Instagram -->
+        <div class="instagram" data-bs-interval="2000">
+            <a href="https://www.instagram.com/clinicalphanutri/" target="_blank">
+                <img src="{% static 'img/iconig.png' %}" alt="Logo do Instagram">
+            </a>
+        </div>
+    </div>
+    <p class="linha">_________________________________________________</p>
+
+    <div class="textos">
+        <!-- Link para o WhatsApp (Suporte) -->
+        <p class="suporte">
+            <a href="https://wa.me/5511970165545" target="_blank">Suporte</a>
+        </p>
+        <p>|</p>
+
+        <!-- Link para a página de Login -->
+        <p class="login">
+            <a href="{% url 'login' %}">Login</a>
+        </p>
+        <p>|</p>
+
+
+        <!-- Link para a página de Cadastro -->
+        <p class="cadastre-se">
+            <a href="{% url 'cadastro' %}">Cadastre-se</a>
+        </p>
+
+
+        
+    </div>
+    <p class="copy">&#169Copyright - Alice Tosi, Felipe Miranda, Leonardo Gonçalves, Luis Felipe Nascimento e Matheus Estevam </p>
+
+    
+</footer>
+
+    <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
+       
+    .carousel-inner img{
+        width: 10%;
+    }
+
+    .fade-in {
+            opacity: 0;
+            transform: translateY(-30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+       
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .link-hover {
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            padding-bottom: 5px;
+        }
+
+        .link-hover::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease-in-out;
+        }
+
+        .link-hover:hover::after {
+            width: 100%;
+        }
+
+        .btn-outline-light {
+            border: 1px solid white;
+            color: white;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-outline-light:hover {
+            background-color: white;
+            color: #224608c0;
+        }
+
+        .btn-agendar:hover {
+            background-color: #1e3a08; 
+            transform: scale(1.1); 
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); 
+        }
+
+        .btn-agendar:active {
+            transform: scale(0.95);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 24px;
+            margin: 10px 0;
+            color: #333; 
+        }
+
+        .hover-effect {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        cursor: pointer;
+    }
+
+    .hover-effect:hover {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+
+    .carousel-img {
+        width: auto; 
+        height: auto;
+        max-width: 80%;
+        max-height: 90vh; 
+        object-fit: none; 
+        margin: 0 auto; 
+    }
+
+    @media screen and (max-width: 992px){
+
+    .slide-in-leftlinha{
+    display: none;
+    }
+    .img-fluid{
+        display: none;
+
+    }
+    .img-fluid2{
+            display: none;
+
+    }
+    
+    }
+    @media screen and (min-width: 992px) and (max-width: 1400px) {
+
+        .slide-in-left hr{
+    display: none;
+    }
+.display-4 {
+    font-size: 3.2rem;
+    width: 37vw;
+    margin-top: 10%;
+}
+
+.signature {
+    font-size: 1.2rem;
+    margin-right: 59%;
+}
+
+
+.frase {
+    font-size: xx-small;
+    width: 36vw;
+}
+
+.btn-agendar {
+    margin-right: 59%;
+    margin-top: -0.5%;
+    height: 55px;
+}
+
+.img-fluid {
+    margin-left: 48%;
+    margin-top: -35%;
+}
+
+.img-fluid2 {
+    margin-top: -47%;
+    margin-left: 57.3%;
+}
+
+/* Keyframes for sliding in from the left */
+@keyframes slideInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%); 
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); 
+    }
+}
+
+#testeluis {
+    display: none;
+}
+
+
+.slide-in-left,.slide-in-leftlinha {
+    animation: slideInFromLeft 1s ease-out;
+}
+
+/* Keyframes for sliding in from the left with rotation */
+@keyframes slideInFromLeftWithRotate {
+    0% {
+        transform: translateX(-300%) rotate(-360deg); 
+    }
+    100% {
+        transform: translateX(0) rotate(0deg); 
+    }
+}
+
+.slide-in-left-rotate {
+    animation: slideInFromLeftWithRotate 2s ease-out;
+}
+
+
+#testeluis {
+    border: 0; /* Remove default border */
+    height: 2px; /* Set height for a thinner line */
+    background-color: black; /* Set the color */
+    width: 30%; /* Reduced width to 30% */
+    margin: 1% auto; /* Center align with auto margin */
+    opacity: 0.8; /* Optional: slight transparency for subtle effect */
+    
+}
+
+
+.card {
+    margin-top: -19%;
+    transition: transform 0.3s; 
+    
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.4);
+}
+
+.image-wrapper {
+    display: inline-block; 
+    padding: 10px;
+    vertical-align: top; 
+}
+
+.fade-in {
+    width: 100%; 
+    object-fit: contain; 
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    cursor: pointer; 
+}
+
+.fade-in:hover {
+    transform: scale(1.1); 
+}
+
+.container-flex {
+    margin-top: 40px; 
+    display: flex; 
+    justify-content: center; 
+    gap: 20px; 
+}
+
+
+
+
+
+
+}
+
+.whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.whatsapp-button a img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-in-out;
+}
+
+.whatsapp-button a img:hover {
+    transform: scale(1.1);
+}
+
+.logos{
+        display: flex;
+        justify-content: center;
+        margin-top: 10vw;
+        gap: 22px;
+        width: 100%;
+
+
+    }
+    .logos img{
+        margin-top: 90%;
+        width: 2.5em;
+    }
+
+    .footer{
+        background-color: #586E26;
+        height: 190px;
+    }
+
+    .footer p{
+        color: white;
+        display: flex;
+        justify-content: center;
+    }
+    .textos{
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+        gap: 22px;
+
+    }
+
+    .linha p{
+        display: flex;
+        justify-content: center;
+        color: rgb(255, 255, 255);
+        width: 100%;
+        margin-top: 0.5%;
+        height:1%;
+    }
+
+    .textos a{
+        text-decoration: none;
+        color: white;
+    }
+
+
+    .copy{
+        display: flex;
+        margin-top: 0%;
+        font-size: 1vw;
+    }
+
+
+.accordion-button {
+  background-color: #ffffff; 
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  transition: background-color 0.3s ease; 
+}
+
+.accordion-button:not(.collapsed) {
+    color: #ffffff; /* Cor do texto no botão expandido */
+    background-color: #586e26d2; /* Cor verde escura para o fundo */
+    box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) 0 #1b4332; /* Sombra interna em um verde ainda mais escuro */
+}
+
+
+.accordion-button:focus, 
+.accordion-button.active {
+  background-color: #586e26d2;
+  color: white;
+}
+
+.accordion-item {
+  max-width: 800px; 
+  margin: 0 auto; 
+}
+
+
+.accordion-body {
+  padding: 15px; 
+}
+
+.accordion-button:focus {
+  outline: none;
+  box-shadow: none; 
+}
+
+</style>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+        
+
+    function fadeInCards() {
+        const cardGroup = document.getElementById('cardGroup');
+        const rect = cardGroup.getBoundingClientRect();
+        
+        
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            cardGroup.style.opacity = 1; 
+            cardGroup.style.transform = 'translateY(0)'; 
+        } else {
+            
+            cardGroup.style.opacity = 0; 
+            cardGroup.style.transform = 'translateY(30px)'; 
+        }
+    }
+
+   
+    window.addEventListener('scroll', fadeInCards);
+   
+    window.addEventListener('load', fadeInCards);
+
+   
+
+     const title = document.getElementById('title');
+     const images = document.querySelectorAll('.fade-in');
+
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                
+                entry.target.classList.add('visible');
+            } else {
+                
+                entry.target.classList.remove('visible');
+            }
+        });
+    });
+
+    
+    observer.observe(title);
+
+    images.forEach(image => {
+        observer.observe(image);
+    });
+
+    window.addEventListener('scroll', function() {
+    const titulo = document.getElementById('titulo');
+    const posicao = titulo.getBoundingClientRect().top; 
+    const alturaJanela = window.innerHeight;
+
+    if (posicao < alturaJanela - 100) { 
+        titulo.style.opacity = '1';
+        titulo.style.transform = 'translateY(0)';
+    }
+});
+
+    
+function iniciarAnimacao(elemento) {
+elemento.style.opacity = '1';
+elemento.style.transform = 'translateY(0)';
+}
+
+
+function aplicarAnimacao(elemento) {
+elemento.style.opacity = '1';
+elemento.style.transform = 'translateY(0)';
+}
+
+
+function resetarAnimacao(elemento) {
+elemento.style.opacity = '0';
+elemento.style.transform = 'translateY(30px)'; 
+}
+
+
+function observarElemento(selector) {
+const elemento = document.querySelector(selector);
+if (!elemento) return; 
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            aplicarAnimacao(entry.target); 
+        } else {
+            resetarAnimacao(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+
+observer.observe(elemento); 
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+observarElemento('#titulo');
+observarElemento('#carouselExampleDark');
+});
+
+document.querySelectorAll('.nav-link link-hover').forEach(link => {
+    link.addEventListener('click', function(event) {
+        event.preventDefault();
+        const targetID = this.getAttribute('href');
+        document.querySelector(targetID).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+
+
+
+</script>

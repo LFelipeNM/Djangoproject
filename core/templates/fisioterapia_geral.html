@@ -1,0 +1,353 @@
+    {% load static %}
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Agendamentos - Alpha Nutri</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="{% static 'img/logopreto.png' %}" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        /* Reset de margens e paddings para garantir consistência */
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .link-hover {
+                position: relative;
+                display: inline-block;
+                text-decoration: none;
+                color: white;
+                padding-bottom: 5px;
+            }
+    
+            .link-hover::after {
+                content: "";
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                background-color: white;
+                transition: width 0.3s ease-in-out;
+            }
+    
+            .link-hover:hover::after {
+                width: 100%;
+            }
+    
+            .btn-outline-light {
+                border: 1px solid white;
+                color: white;
+                transition: background-color 0.3s, color 0.3s;
+            }
+    
+            .btn-outline-light:hover {
+                background-color: white;
+                color: #224608c0;
+            }
+
+        /* Estilização do Container */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(128, 123, 123, 0.815);
+            background-color: #ceecc7;
+            width: 99%;
+            margin-top: 19%;
+        }
+
+        /* Estilização do Header */
+        .header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .header h1 {
+            position: absolute;
+            font-size: 1.75rem;
+            color: #3f712f;
+            font-family: 'Montserrat';
+            left: 44%;
+
+        }
+
+       
+
+        
+        a {
+            color: #00ff5e; 
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+
+      
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            border: 1px solid #ffffff;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3c5635; /* Azul escuro */
+            color: white;
+            font-family: 'Montserrat';
+            
+        }
+
+        td a {
+            color: #007bff; /* Azul claro */
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilização do Botão */
+        .btn-new {
+            display: inline-block;
+            margin-bottom: 1rem;
+            padding: 0.75rem 1.5rem;
+            background-color: #17622d; /* Verde */
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-new:hover {
+            background-color: #7283d1; /* Verde escuro */
+        }
+
+        @media screen and (max-width: 992px) {
+            table {
+                width: 100%;
+                display: block; 
+            }
+        
+            thead {
+                display: block; 
+            }
+        
+            thead tr {
+                display: block; 
+            }
+        
+            thead th {
+                display: block;
+                padding: 10px; 
+                font-weight: bold; 
+                background-color: #3c5635; 
+                border-bottom: 2px solid #ddd;
+                text-align: left;
+                color: black; 
+            }
+        
+            tbody, tr {
+                display: block; 
+            }
+            tr {
+                margin-bottom: 15px; 
+            }
+        
+            td {
+                display: flex; 
+                justify-content: space-between; 
+                padding: 10px; 
+                border-bottom: 1px solid #ddd; 
+            }
+        
+            td::before {
+                content: attr(data-label); 
+                flex-basis: 40%; 
+                font-weight: bold; 
+                color: white; 
+            }
+        }
+
+      
+
+
+
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg mx-4 my-4 p-2 rounded-5 shadow-sm" style="background-color: #224608c0 !important;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'img/unnamed.png' %}" alt="Logo" width="70" height="70" class="d-inline-block align-text-top" style="margin-left: 2vh;">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav mx-auto">
+                    <a class="nav-link active link-hover" href="{% url 'carregamento5' %}" style="color: white; margin-right: 20px;">Home</a>
+                    <a class="nav-link link-hover" href="#" style="color: white;">Ver Agenda</a>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    {% if user.is_authenticated %}
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: rgb(255, 255, 255); font-size: 1.0rem; white-space: nowrap;">
+                                DR.(A), {{ user }}!
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#profileModal">Perfil</a></li>
+                                <li><a class="dropdown-item" href="#" style="color: black;" data-bs-toggle="modal" data-bs-target="#especialidadeModal">Consultas</a></li>
+                                <li><a class="dropdown-item" href="{% url 'carregamento3' %}">Sair</a></li>
+                            </ul>
+                        </div>
+                    {% else %}
+                        <a class="nav-link link-hover" href="{% url 'carregamento' %}" style="color: white; margin-right: 15px;">Login</a>
+                        <a class="btn btn-outline-light" href="{% url 'carregamento2' %}" role="button">Cadastro</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+   
+    <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="profileModalLabel">Perfil do Usuário</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    
+                    <h6>Alterar Senha</h6>
+                    <form method="POST" action="{% url 'alterar_senha' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="currentPassword" class="form-label">Senha Atual</label>
+                            <input type="password" class="form-control" id="currentPassword" name="current_password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newPassword" class="form-label">Nova Senha</label>
+                            <input type="password" class="form-control" id="newPassword" name="new_password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirmar Nova Senha</label>
+                            <input type="password" class="form-control" id="confirmPassword" name="confirm_password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="background-color: #ff6f00;">Alterar Senha</button>
+                    </form>
+    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: #ff6f00;">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if messages %}
+    <div>
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<div class="modal fade" id="especialidadeModal" tabindex="-1" aria-labelledby="especialidadeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="especialidadeModalLabel">Selecione a Especialidade</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="especialidadeForm" method="get" action="#">
+                    <div class="mb-3">
+                        <label for="especialidadeSelect" class="form-label">Especialidade:</label>
+                        <select class="form-select" id="especialidadeSelect" name="especialidade" required>
+                            <option value="" disabled selected>Escolha uma especialidade</option>
+                            <option value="Nutrição Geral">Nutrição Geral</option>
+                            <option value="Nutrição Infantil">Nutrição Infantil</option>
+                            <option value="Fisioterapia Geral">Fisioterapia Geral</option>
+                            <option value="Fisioterapia Infantil">Fisioterapia Infantil</option>
+                            <option value="Introdução Alimentar">Introdução Alimentar</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary" style="background-color: #ff6f00; border-color: #ff6f00;">Confirmar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    </nav>
+
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Observações</th>
+                    <th>Data do agendamento</th>
+                    <th>Data da Consulta</th>
+                    <th>Hora da Consulta</th>
+                    <th>Id do paciente</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if pacientes %}
+                    {% for paciente in pacientes %}
+                        <tr>
+                            <td>{{ paciente.id }}</td>
+                            <td>{{ paciente.nome_paciente }}</td>
+                            <td>{{ paciente.observacao }}</td>
+                            <td>{{ paciente.data_agendamento }}</td>
+                            <td>{{ paciente.data_consulta }}</td>  
+                            <td>{{ paciente.hora_desejada_formatada }}</td>
+                            <td>{{ paciente.paciente_id }}</td>
+                            <td>
+                                <form method="post" action="{% url 'deletar_paciente' paciente.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">Deletar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="7">Nenhum paciente encontrado.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+
+</body>
+</html>
+

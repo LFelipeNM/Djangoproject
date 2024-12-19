@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>Clínica AlphaNutri | Nutrição</title>
+    <link rel="icon" href="{% static 'img/logopreto.png' %}" type="image/x-icon">
+
+    
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        body {
+            background-color: #ff8400ac;
+        }
+    
+        .container {
+            width: 55%;
+            margin: 2rem auto;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0px 15px 35px black;
+            background-color: #ffffffdd;
+        }
+    
+        .header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+    
+        .header h1 {
+            font-size: 2.75rem;
+            color: #767171;
+            font-family: 'Montserrat';
+            margin-left: 2%;
+            margin-top: 4%;
+        }
+    
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+    
+        .form-control {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+    
+        .form-control label {
+            position: absolute;
+            top: 0;
+            left: 17%;
+            font-weight: bold;
+            font-family: 'Montserrat';
+            color: #696262;
+            pointer-events: none;
+            font-size: 1rem;
+            transition: 0.3s ease all;
+            margin-top: 2.5%;
+        }
+    
+        .dataa {
+            position: absolute;
+            top: 0;
+            left: 17%;
+            font-family: 'Montserrat';
+            color: #696262;
+            pointer-events: none;
+            font-size: 1rem;
+            margin-top: 2.5%;
+        }
+    
+        .form-control input,
+        .form-control select,
+        .form-control textarea {
+            height: 3.2rem;
+            width: 70%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-family: 'Montserrat';
+            transition: all 0.3s ease;
+            outline: none;
+            margin-left: 14%;
+        }
+    
+        .form-control input:focus,
+        .form-control select:focus,
+        .form-control textarea:focus {
+            border-color: #ff8400ac;
+            box-shadow: 0 0 0 0.3rem #ff84004e;
+            margin-left: 14%;
+        }
+    
+        .form-control input:focus + label,
+        .form-control select:focus + label,
+        .form-control textarea:focus + label,
+        .form-control input:valid + label,
+        .form-control select:valid + label,
+        .form-control textarea:valid + label {
+            transform: translate(-15px, -16px) scale(0.88);
+            color: #ff8400ac;
+            font-weight: bold;
+            margin-left: 0%;
+            margin-top: 2%;
+            font-size: 100%;
+            padding: 0 12px;
+            z-index: 1111;
+            line-height: 30px;
+        }
+    
+        .form-control input:valid + label,
+        .form-control select:valid + label,
+        .form-control textarea:valid + label {
+            color: #ff8400ac;
+            font-weight: 10px;
+        }
+    
+        button {
+            background-color: #ff8400ac;
+            color: #ffffffac;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+    
+        button:hover {
+            background-color: #000000ac;
+            color: #ffffff;
+            box-shadow: 0px 15px 35px rgb(0, 0, 0);
+        }
+    
+        .genero {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            margin-top: -1rem;
+            font-family: 'Montserrat';
+            margin-left: 15%;
+        }
+    
+        .genero input {
+            width: auto;
+            background-color: #ff8400ac;
+        }
+    
+        .labelline {
+            position: absolute;
+            left: 10%;
+            bottom: 10px;
+            font-size: 0.9rem;
+            color: #696262;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .whatsapp-button a img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease-in-out;
+        }
+        
+        .whatsapp-button a img:hover {
+            transform: scale(1.1);
+        }
+    
+        @media screen and (max-width: 885px) {
+            .genero {
+                flex-direction: column;
+            }
+        }
+
+    </style>
+    
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>Agende-se</h1>
+            </div>
+            <form action="{% url 'agendou12' %}" method="post">
+                {% csrf_token %}
+                
+                <div class="form-control">
+                    <input type="text" id="nome" name="nome" required placeholder="Nome do paciente">
+                    <label for="nome"></label>
+                </div>
+
+                
+                <div class="form-control">
+                    <select id="especialidade" name="especialidade" required onchange="updateSpecialistName()">
+                        <option value="">Selecione uma especialidade</option>
+                        <option value="nutricionista_geral">Nutricionista Geral</option>
+                        <option value="nutricionista_infantil">Nutricionista Infantil</option>
+                        <option value="introducao_alimentar">Introdução Alimentar</option>
+                        <option value="fisioterapia_geral">Fisioterapia Geral</option>
+                        <option value="fisioterapia_infantil">Fisioterapia Infantil</option>
+                    </select>
+                    <label for="especialidade"></label>
+                </div>
+            
+                <div class="form-control">
+                    <select id="especialista" name="especialista" required>
+                        <option value="">Selecione um especialista</option>
+                    </select>
+                    <label for="especialista"></label>
+                </div>
+            
+                <div class="genero">
+                    <p>Sexo:</p>
+                    <div>
+                        <input type="radio" id="feminino" name="genero" value="feminino" required>
+                        <label for="feminino">Feminino</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="masculino" name="genero" value="masculino" required>
+                        <label for="masculino">Masculino</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="outro" name="genero" value="outro" required>
+                        <label for="outro">Outro</label>
+                    </div>
+                </div>
+            
+                <div class="form-control">
+                    <p class="dataa"></p>
+                    <input type="date" id="data_consulta" name="data_consulta" required min="2024-12-01" max="2024-12-31" onchange="checkWeekday()">
+                    <label for="data_consulta"></label>
+                </div>
+            
+                <div class="form-control">
+                    <input type="time" id="hora_desejada" name="hora_desejada" required min="08:00" max="18:00">
+                    <label for="hora_desejada"></label>
+                </div>
+                
+                {% if messages %}
+                <script type="text/javascript">
+        
+                window.onload = function() {
+                    {% for message in messages %}
+                        alert("{{ message }}");  
+                    {% endfor %}
+                }
+                </script>
+                {% endif %}
+            
+                <div class="form-control">
+                    <textarea id="observacoes" name="observacoes" rows="4" placeholder="Observações"></textarea>
+                    <label for="observacoes"></label>
+                </div>
+            
+                <button type="submit">Salvar</button>
+            </form>
+
+            
+
+        <div class="whatsapp-button">
+            <a href="https://wa.me/5511970165545" target="_blank" title="Fale conosco pelo WhatsApp">
+                <img src="{% static 'img/whatsapp-icon.png' %}" alt="WhatsApp">
+            </a>
+        </div>
+    
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('Página carregada e pronta.');
+            });
+    
+            function updateSpecialistName() {
+                const especialidade = document.getElementById('especialidade').value;
+                const especialistaSelect = document.getElementById('especialista');
+    
+                especialistaSelect.innerHTML = '<option value="">Selecione um especialista</option>';
+    
+                if (especialidade) {
+                    fetch(`/especialistas/${especialidade}/`)
+                        .then(response => response.json())
+                        .then(data => {
+                            data.forEach(specialist => {
+                                const option = document.createElement('option');
+                                option.value = specialist.id;
+                                option.textContent = specialist.username;
+                                especialistaSelect.appendChild(option);
+                            });
+                        })
+                        .catch(error => console.error('Erro ao buscar especialistas:', error));
+                }
+            }
+
+            function checkWeekday() {
+                const inputDate = document.getElementById("data_consulta").value;
+                const date = new Date(inputDate);
+                const day = date.getDay(); 
+        
+                if (day === 0 || day === 6) {
+                    alert("Por favor, selecione um dia útil (segunda a sexta-feira).");
+                    document.getElementById("data_consulta").value = "";
+                }
+            }
+        </script>
+    </body>
+    </html>

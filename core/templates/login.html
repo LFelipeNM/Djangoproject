@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+    {% load static %}
+    <link rel="icon" href="{% static 'img/logopreto.png' %}" type="image/x-icon">
+
+    <title>Login | AlphaNutri</title>
+</head>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lora:ital,wght@0,400..700;1,400..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Shadows+Into+Light&display=swap');
+
+
+body {
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("{% static 'img/fotofundo.png' %}");
+    background-size: cover; /* Faz com que a imagem cubra toda a área */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+    background-position: center; /* Centraliza a imagem */
+    opacity: 0.85; /* Ajuste a transparência (0.0 = totalmente transparente, 1.0 = opaco) */
+    z-index: -1; /* Coloca o fundo atrás de todo o conteúdo */
+}
+
+
+
+.form-container {
+  width: 350px;
+  height: 450px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 20px 30px;
+}
+
+.title {
+  text-align: center;
+  font-family: 'Abril Fatface', sans-serif;
+  margin: 10px 0 30px 0;
+  font-size: 38px;
+  font-weight: 800;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 15px;
+  font-size:15px;
+  font-family: Lora;
+}
+.page-link {
+  margin: 0;
+  text-align: end;
+  color: rgba(0, 0, 0, 0.564);
+  text-decoration-color: #747474;
+}
+
+.page-link-label {
+  cursor: pointer;
+  font-family: Lora;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.page-link-label:hover {
+  color: #ff8400ac;
+}
+
+.form-btn {
+  padding: 10px 15px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border-radius: 20px;
+  border: 0 !important;
+  outline: 0 !important;
+  color: white;
+  cursor: pointer;
+}
+
+.form-btn:active {
+  box-shadow: none;
+}
+
+.form-btn:hover {
+
+  background-color: #ff8400ac;
+  color: white;
+}
+
+.sign-up-label {
+  margin: 0;
+  font-size: 10px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;   
+}
+
+.sign-up-link {
+  margin-left: 1px;
+  font-size: 11px;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 800;
+  font-family:Lora ;
+}
+
+.buttons-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 20px;
+  gap: 15px;
+  font-family: Lora;
+}
+
+.buttons-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 20px;
+  gap: 15px;
+  font-family: Lora;
+}
+
+.apple-login-button,
+    .google-login-button {
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 10px 15px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+        rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 11px;
+  gap: 5px;
+}
+
+.apple-login-button {
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #000;
+}
+
+.google-login-button {
+  border: 2px solid #bd9e7d;
+}
+
+.apple-icon,
+    .google-icon {
+  font-size: 18px;
+  margin-bottom: 1px;
+}
+
+.form-control:focus {
+    border-color: #ff8400ac; /* Cor da borda quando focado */
+    box-shadow: 0 0 0 0.3rem #ff84004e; /* Efeito de sombra opcional */
+}
+
+.btn:hover{
+  box-shadow: #000;
+  background-color: #ff8400ac;
+}
+
+.whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.whatsapp-button a img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease-in-out;
+}
+
+.whatsapp-button a img:hover {
+  transform: scale(1.1);
+}
+
+
+</style>
+<body>
+  <div class="container d-flex flex-column align-items-center justify-content-center min-vh-100">
+    <div class="form-container text-center">
+        <p class="title">Login</p>
+        <form class="form" method="POST" action="{% url 'loginvd' %}">
+            {% csrf_token %}
+            <div class="form-floating mb-1">
+                <input type="email" class="form-control" id="floatingInput" name="email" placeholder="" style="height: 62px; font-family: Lora;" required>
+                <label for="floatingInput">Email</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="" style="height: 62px; font-family: 'Times New Roman', Times, serif;" required>
+                <label for="floatingPassword">Senha</label>
+            </div>
+            <p class="page-link">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" class="page-link-label" style="font-family: Lora; font-size: 12px;">Esqueceu sua senha?</a>
+            </p>
+            <button type="submit" class="btn btn-primary form-btn mb-3" style="background-color: #ff8400; font-family: Lora;">Conecte-se</button>
+        </form>
+        <p class="sign-up-label">
+            Não tenho uma conta?<a href="{% url 'carregamento2' %}" class="sign-up-link" style="color: #ff8400d3;">Cadastre-se</a>
+        </p>
+
+    </div>
+</div>
+
+<div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="forgotPasswordModalLabel">Recuperar Senha</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form method="POST" action="{% url 'reset_password' %}">
+                  {% csrf_token %}
+                  <div class="mb-3">
+                      <label for="emailInput" class="form-label">Digite seu email</label>
+                      <input type="email" class="form-control" id="emailInput" name="email" placeholder="Seu email" required>
+                  </div>
+                  {% if message %}
+                  <script>
+                      alert("{{ message.text }}");
+                  </script>
+                  {% endif %}
+                  <button type="submit" class="btn btn-primary" style="background-color: #ff8400;">Enviar</button>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+<div class="whatsapp-button">
+  <a href="https://wa.me/5511970165545" target="_blank" title="Fale conosco pelo WhatsApp">
+      <img src="{% static 'img/whatsapp-icon.png' %}" alt="WhatsApp">
+  </a>
+</div>
+
+  
+</body>
+
+</html>
